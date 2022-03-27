@@ -14,7 +14,6 @@ function App() {
   const [NFTContract, setNFTContract] = useState(null);
   
   useEffect(() => {
-    console.log("in the first useeffect")
     if (window.ethereum) {
       setIsWalletInstalled(true);
     }
@@ -25,7 +24,6 @@ function App() {
   }, [date]);
 
   useEffect(() => {
-    console.log("in the third useeffect")
     initNFTContract();
   }, [account]);
 
@@ -61,6 +59,11 @@ function App() {
 
       <h1>Horoscope NFT Minting Dapp</h1>
       <p>Connected as: {account}</p>
+      <h2>
+        For custom NFT enter your string....
+        <br />
+        <input type="text" name="customInput" id="cstminp" onChange={(event) => {setZodiacSign(event.target.value)}}/>
+      </h2>
       <input onChange={handleDateInput} value={date} type="date" id="dob" />
       <br />
       <br />
@@ -97,9 +100,6 @@ function App() {
   function handleDateInput({ target }) {
     setDate(target.value)
     calculateZodiacSign(target.value)
-    // setTimeout(() => {
-    //   console.log(target.value)
-    // }, 1000);
   }
 
 
@@ -191,7 +191,6 @@ function App() {
   }
 
   async function mintNFT() {
-    // console.log("minting");
     setIsMinting(true);
     try {
       await NFTContract.mintNFT(account, zodiacSign);
