@@ -21,7 +21,7 @@ async function main() {
 
   console.log("horoscopeNFT deployed to:", hscp.address);
 
-  txn = await hscp.mintNFT("0xEF645838bA7567E5853eDA86796Fe7cfd9Ba11D5", "Hk contract working")
+  txn = await hscp.mintNFT("0xEF645838bA7567E5853eDA86796Fe7cfd9Ba11D5", "virgo")
   txn.wait()
 }
 
